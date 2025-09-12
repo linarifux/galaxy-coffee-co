@@ -58,7 +58,7 @@ function App() {
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10">
                 <img 
-                  src="/src/assets/logo.svg" 
+                  src="https://i.postimg.cc/HswPWvnC/Asset-5.png" 
                   alt="Galaxy Coffee Co. Logo" 
                   className="w-full h-full"
                 />
@@ -79,7 +79,7 @@ function App() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`hover:text-purple-400 transition-colors ${
+                  className={`hover:text-purple-400 transition-colors cursor-pointer ${
                     activeSection === item.id ? 'text-purple-400' : 'text-gray-300'
                   }`}
                 >
@@ -96,7 +96,7 @@ function App() {
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/hero.jpg" 
+            src="https://i.postimg.cc/nVwPw9W6/2-1.jpg" 
             alt="Galaxy Coffee Robot" 
             className="w-full h-full object-cover opacity-30"
           />
@@ -123,7 +123,7 @@ function App() {
           <div className="mb-8 inline-flex items-center space-x-2 bg-purple-500/20 backdrop-blur-sm rounded-full px-6 py-2 border border-purple-500/30">
             <div className="w-5 h-5">
               <img 
-                src="/src/assets/logo.svg" 
+                src="https://i.postimg.cc/HswPWvnC/Asset-5.png" 
                 alt="Galaxy Coffee Co. Logo" 
                 className="w-full h-full"
               />
@@ -553,7 +553,7 @@ function App() {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
               <img 
-                src="/src/assets/logo.svg" 
+                src="https://i.postimg.cc/HswPWvnC/Asset-5.png" 
                 alt="Galaxy Coffee Co. Logo" 
                 className="w-8 h-8"
               />
