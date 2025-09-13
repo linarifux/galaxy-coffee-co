@@ -4,11 +4,12 @@ import { ChevronDown, Coffee, Zap, Clock, Shield, MapPin, Users, TrendingUp, Mai
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [showLearnMore, setShowLearnMore] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Update active section based on scroll position
       const sections = ['hero', 'about', 'features', 'locations', 'scale', 'contact'];
       const current = sections.find(section => {
@@ -34,7 +35,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-950 to-gray-900 text-white relative overflow-hidden">
       {/* Stars Background */}
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         {Array.from({ length: 100 }).map((_, i) => (
           <div
             key={i}
@@ -48,6 +49,43 @@ function App() {
           />
         ))}
       </div>
+
+      {/* Popup Modal for Learn More */}
+      {showLearnMore && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-gradient-to-br from-purple-900/90 to-purple-800/80 rounded-2xl p-8 max-w-md w-full border border-purple-500/40 shadow-xl animate-pop-up relative">
+            <button
+              onClick={() => setShowLearnMore(false)}
+              className="absolute top-4 right-4 text-purple-300 hover:text-purple-400 text-2xl font-bold cursor-pointer"
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+              Host a Galaxy Coffee Kiosk
+            </h2>
+            <p className="text-gray-300 mb-4">
+              Transform your space with a fully autonomous, barista-quality coffee kiosk. 
+              Delight your customers, boost your revenue, and join the future of food & beverage.
+            </p>
+            <ul className="list-disc list-inside text-purple-300 mb-4">
+              <li>Minimal space required (~2.5 m²)</li>
+              <li>No plumbing or kitchen needed</li>
+              <li>24/7 operation & self-cleaning</li>
+              <li>Social-media-ready experience</li>
+            </ul>
+            <button
+              onClick={() => {
+                setShowLearnMore(false);
+                scrollToSection('contact');
+              }}
+              className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 hover:scale-105 animate-pulse-glow cursor-pointer mt-2"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -82,6 +120,7 @@ function App() {
                   className={`hover:text-purple-400 transition-colors cursor-pointer ${
                     activeSection === item.id ? 'text-purple-400' : 'text-gray-300'
                   }`}
+                  style={{ cursor: 'pointer' }}
                 >
                   {item.label}
                 </button>
@@ -92,9 +131,9 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section id="hero" className="relative min-h-screen h-screen pt-16 flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Hero Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="fixed inset-0 z-0 pointer-events-none">
           <img 
             src="https://i.postimg.cc/nVwPw9W6/2-1.jpg" 
             alt="Galaxy Coffee Robot" 
@@ -102,9 +141,8 @@ function App() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-purple-950/60 to-gray-900/80"></div>
         </div>
-        
         {/* Floating Elements Animation */}
-        <div className="absolute inset-0 z-1">
+        <div className="absolute inset-0 z-1 pointer-events-none">
           {Array.from({ length: 20 }).map((_, i) => (
             <div
               key={i}
@@ -147,13 +185,13 @@ function App() {
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <button
               onClick={() => scrollToSection('about')}
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 animate-pulse-glow"
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 animate-pulse-glow cursor-pointer"
             >
               Discover the Future
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-4 border-2 border-purple-500 rounded-full font-semibold hover:bg-purple-500/20 transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 border-2 border-purple-500 rounded-full font-semibold hover:bg-purple-500/20 transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               Partner With Us
             </button>
@@ -162,7 +200,7 @@ function App() {
         
         <button
           onClick={() => scrollToSection('about')}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow cursor-pointer"
         >
           <ChevronDown className="w-8 h-8 text-purple-400" />
         </button>
@@ -285,20 +323,22 @@ function App() {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="bg-gradient-to-br from-purple-600/20 to-purple-900/40 backdrop-blur-sm rounded-3xl p-8 border border-purple-500/30 hover:scale-105 transition-all duration-500">
-                <div className="w-full h-64 bg-gradient-to-br from-purple-500/10 to-purple-700/20 rounded-2xl flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Coffee className="w-10 h-10 text-purple-400" />
-                    </div>
-                    <p className="text-purple-300 font-medium">Robotic Barista Visualization</p>
-                    <p className="text-gray-400 text-sm mt-2">Touchscreen Interface & Automated Brewing</p>
-                  </div>
-                </div>
+            {/* Robot Coffee Machine Image - Clean and Themed */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="bg-gradient-to-br from-purple-900/60 to-purple-800/40 rounded-3xl shadow-lg border border-purple-500/30 p-8 flex items-center justify-center">
+                <img
+                  src="https://i.postimg.cc/5N1TGV7d/galaxy-coffee-co-machine.png" // Ensure this path points to your local asset
+                  alt="Galaxy Robot Coffee Machine"
+                  className="h-64 w-auto object-contain drop-shadow-xl"
+                  style={{ background: "rgba(60, 7, 83, 0.08)", borderRadius: "1.5rem" }}
+                />
               </div>
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-400 rounded-full animate-ping"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+              <p className="text-purple-300 font-semibold text-center mt-6 text-lg">
+                The Galaxy Coffee Kiosk: Robotic precision, barista-quality taste.
+              </p>
+              <p className="text-gray-400 text-center mt-2 text-sm">
+                Sleek, compact, and futuristic — designed to stand out in any space.
+              </p>
             </div>
           </div>
         </div>
@@ -390,7 +430,10 @@ function App() {
               <p className="text-gray-300 mb-6">
                 Transform your space with cutting-edge coffee technology that delights customers and generates revenue.
               </p>
-              <button className="px-6 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+              <button
+                className="px-6 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-700 transition-colors cursor-pointer"
+                onClick={() => setShowLearnMore(true)}
+              >
                 Learn More
               </button>
             </div>
@@ -403,7 +446,10 @@ function App() {
               <p className="text-gray-300 mb-6">
                 Own your region and build a network of robotic coffee kiosks with our proven business model.
               </p>
-              <button className="px-6 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+              <button
+                className="px-6 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-700 transition-colors cursor-pointer"
+                onClick={() => scrollToSection('contact')}
+              >
                 Inquire Now
               </button>
             </div>
@@ -416,7 +462,10 @@ function App() {
               <p className="text-gray-300 mb-6">
                 Invest in the future of coffee with low operating costs, high margins, and growing demand.
               </p>
-              <button className="px-6 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+              <button
+                className="px-6 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-700 transition-colors cursor-pointer"
+                onClick={() => scrollToSection('contact')}
+              >
                 Get Started
               </button>
             </div>
@@ -537,7 +586,7 @@ function App() {
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 hover:scale-105 animate-pulse-glow"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 hover:scale-105 animate-pulse-glow cursor-pointer"
                 >
                   Send Message
                 </button>
@@ -572,6 +621,26 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Add animation styles */}
+      <style>
+        {`
+          @keyframes pop-up {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .animate-pop-up {
+            animation: pop-up 0.3s cubic-bezier(.4,2,.3,1) forwards;
+          }
+          @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+          .animate-fade-in {
+            animation: fade-in 0.3s ease;
+          }
+        `}
+      </style>
     </div>
   );
 }
