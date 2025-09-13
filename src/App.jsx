@@ -40,7 +40,7 @@ function App() {
       <div
         className="fixed inset-0 w-full h-full -z-10"
         style={{
-          backgroundImage: "url('./src/assets/background.jpg')",
+          backgroundImage: "url('https://i.postimg.cc/k56TDJMH/background.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
