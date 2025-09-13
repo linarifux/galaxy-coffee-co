@@ -82,3 +82,35 @@
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
 }
+
+/* Add this to the top of your index.css file */
+@font-face {
+  font-family: 'Andaro';
+  src: url('./assets/andaroo-font 2/andaroo-bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/Montserrat/static/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/Montserrat/static/Montserrat-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+/* Add more weights/styles as needed from the static folder */
+
+body, html {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}

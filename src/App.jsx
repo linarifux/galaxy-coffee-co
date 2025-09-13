@@ -35,8 +35,22 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-950 to-gray-900 text-white relative overflow-hidden">
-      {/* Stars Background */}
+    <div className="min-h-screen text-white relative overflow-hidden">
+      {/* Fixed Background Image */}
+      <div
+        className="fixed inset-0 w-full h-full -z-10"
+        style={{
+          backgroundImage: "url('./src/assets/background.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed"
+        }}
+      >
+        {/* Overlay for better content visibility - now less opaque */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a093680] via-[#1a093660] to-[#1a0936b3]"></div>
+      </div>
+      {/* Stars Background (optional) */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {Array.from({ length: 100 }).map((_, i) => (
           <div
@@ -103,7 +117,8 @@ function App() {
                   className="w-full h-full"
                 />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent"
+                style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
                 Galaxy Coffee Co.
               </span>
             </div>
@@ -176,19 +191,11 @@ function App() {
           <img
             src="https://i.postimg.cc/HswPWvnC/Asset-5.png"
             alt="Galaxy Coffee Co. Logo"
-            className="h-32 sm:h-40 w-auto drop-shadow-2xl"
-            style={{ maxWidth: '220px' }}
+            className="h-32 sm:h-40 lg:h-80 w-auto drop-shadow-2xl"
+            style={{ maxWidth: '380px' }}
           />
         </div>
-        {/* Hero Background Image */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <img 
-            src="https://i.postimg.cc/nVwPw9W6/2-1.jpg" 
-            alt="Galaxy Coffee Robot" 
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-purple-950/60 to-gray-900/80"></div>
-        </div>
+        {/* Removed Hero Background Image */}
         {/* Floating Elements Animation */}
         <div className="absolute inset-0 z-1 pointer-events-none">
           {Array.from({ length: 20 }).map((_, i) => (
@@ -206,30 +213,20 @@ function App() {
         </div>
 
         <div className="text-center z-10 max-w-5xl mx-auto animate-fade-in-up">
-          <div className="mb-8 inline-flex items-center space-x-2 bg-purple-500/20 backdrop-blur-sm rounded-full px-6 py-2 border border-purple-500/30">
-            <div className="w-5 h-5">
-              <img 
-                src="https://i.postimg.cc/HswPWvnC/Asset-5.png" 
-                alt="Galaxy Coffee Co. Logo" 
-                className="w-full h-full"
-              />
-            </div>
-            <span className="text-purple-300 text-sm font-medium">Coffee From Another Galaxy</span>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h2 className="text-purple-300 text-2xl font-bold my-8" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
+            Coffee From Another Galaxy
+          </h2>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
             <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text text-transparent">
               Welcome to the
             </span>
             <br />
             <span className="text-white">Future of Coffee</span>
           </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed ">
             Fully autonomous robotic kiosks that serve premium, barista-level beverages 24/7. 
             No lines, no staffing issues, no inconsistent quality.
           </p>
-          
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <button
               onClick={() => scrollToSection('about')}
@@ -258,7 +255,7 @@ function App() {
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
               We don't just serve coffee.
               <br />
               <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
@@ -271,8 +268,8 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:scale-105 transition-all duration-300 hover:border-purple-400/40">
+          <div className="grid md:grid-cols-3 gap-8 justify-center text-center">
+            <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:scale-105 transition-all duration-300 hover:border-purple-400/40 flex flex-col items-center">
               <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-6">
                 <Zap className="w-6 h-6 text-purple-400" />
               </div>
@@ -282,7 +279,7 @@ function App() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:scale-105 transition-all duration-300 hover:border-purple-400/40">
+            <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:scale-105 transition-all duration-300 hover:border-purple-400/40 flex flex-col items-center">
               <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-6">
                 <Clock className="w-6 h-6 text-purple-400" />
               </div>
@@ -292,7 +289,7 @@ function App() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:scale-105 transition-all duration-300 hover:border-purple-400/40">
+            <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:scale-105 transition-all duration-300 hover:border-purple-400/40 flex flex-col items-center">
               <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-6">
                 <Shield className="w-6 h-6 text-purple-400" />
               </div>
@@ -309,7 +306,7 @@ function App() {
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
               What Is a <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">Galaxy Coffee Kiosk?</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -396,7 +393,7 @@ function App() {
       <section id="locations" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
               Perfect for <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">Any Location</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
@@ -460,7 +457,7 @@ function App() {
       <section id="scale" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
               Built to <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">Scale</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -535,7 +532,7 @@ function App() {
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
               Let's <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">Connect</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -654,7 +651,8 @@ function App() {
                 alt="Galaxy Coffee Co. Logo" 
                 className="w-8 h-8"
               />
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent"
+                style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
                 Galaxy Coffee Co.
               </span>
             </div>
