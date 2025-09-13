@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Coffee, Zap, Clock, Shield, MapPin, Users, TrendingUp, Mail, Phone, Star } from 'lucide-react';
+import { ChevronDown, Coffee, Zap, Clock, Shield, MapPin, Users, TrendingUp, Mail, Phone, Star, Menu, X } from 'lucide-react';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [showLearnMore, setShowLearnMore] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +31,7 @@ function App() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false); // Close mobile menu on navigation
   };
 
   return (
@@ -105,6 +107,7 @@ function App() {
                 Galaxy Coffee Co.
               </span>
             </div>
+            {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
               {[
                 { id: 'hero', label: 'Home' },
@@ -126,12 +129,57 @@ function App() {
                 </button>
               ))}
             </div>
+            {/* Hamburger Icon for Mobile */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-purple-400 hover:text-purple-300 focus:outline-none"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+              </button>
+            </div>
           </div>
         </div>
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 w-full bg-gray-900/95 backdrop-blur-lg border-b border-purple-500/20 z-50">
+            <div className="flex flex-col items-center py-4 space-y-2">
+              {[
+                { id: 'hero', label: 'Home' },
+                { id: 'about', label: 'About' },
+                { id: 'features', label: 'Features' },
+                { id: 'locations', label: 'Locations' },
+                { id: 'scale', label: 'Partnership' },
+                { id: 'contact', label: 'Contact' },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`w-full py-2 text-lg font-semibold hover:text-purple-400 transition-colors cursor-pointer ${
+                    activeSection === item.id ? 'text-purple-400' : 'text-gray-300'
+                  }`}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen h-screen pt-16 flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Brand Logo - moved here */}
+        <div className="w-full flex justify-center items-center absolute top-0 left-0 pt-8 z-20 my-8 lg:my-16">
+          <img
+            src="https://i.postimg.cc/HswPWvnC/Asset-5.png"
+            alt="Galaxy Coffee Co. Logo"
+            className="h-32 sm:h-40 w-auto drop-shadow-2xl"
+            style={{ maxWidth: '220px' }}
+          />
+        </div>
         {/* Hero Background Image */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <img 
