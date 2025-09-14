@@ -185,9 +185,12 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen h-screen pt-16 flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section
+        id="hero"
+        className="relative min-h-screen h-screen flex flex-col items-center justify-center overflow-hidden mt-8"
+      >
         {/* Brand Logo - moved here */}
-        <div className="w-full flex justify-center items-center absolute top-0 left-0 pt-8 z-20 my-8 lg:my-16">
+        <div className="w-full flex justify-center items-center pointer-events-none">
           <img
             src="https://i.postimg.cc/HswPWvnC/Asset-5.png"
             alt="Galaxy Coffee Co. Logo"
@@ -195,7 +198,6 @@ function App() {
             style={{ maxWidth: '380px' }}
           />
         </div>
-        {/* Removed Hero Background Image */}
         {/* Floating Elements Animation */}
         <div className="absolute inset-0 z-1 pointer-events-none">
           {Array.from({ length: 20 }).map((_, i) => (
@@ -212,7 +214,7 @@ function App() {
           ))}
         </div>
 
-        <div className="text-center z-10 max-w-5xl mx-auto animate-fade-in-up">
+        <div className="flex flex-col items-center justify-center w-full text-center z-10 max-w-5xl animate-fade-in-up mt-0">
           <h2 className="text-purple-300 text-2xl font-bold my-8" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
             Coffee From Another Galaxy
           </h2>
@@ -254,7 +256,7 @@ function App() {
       {/* About Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 flex flex-col items-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Andaro, Montserrat, Arial, Helvetica, sans-serif' }}>
               We don't just serve coffee.
               <br />
@@ -266,6 +268,47 @@ function App() {
               At Galaxy Coffee Co., we believe that getting great coffee should be fast, consistent, 
               and exciting — without long lines, staffing issues, or inconsistent quality.
             </p>
+          </div>
+
+          {/* Modern Portfolio Section */}
+          <div className="mb-16">
+            <h3 className="text-3xl md:text-4xl font-bold mb-8 text-center" style={{ fontFamily: 'Montserrat, Arial, Helvetica, sans-serif' }}>
+              Explore Our Robotic Creations
+            </h3>
+            <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-10">
+              Each cup is a blend of technology and taste. Discover the drinks crafted by our autonomous barista—where every experience is unique, futuristic, and Instagram-worthy.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+              {[
+                { img: "Generated Image September 14, 2025 - 11_08PM.png", name: "Cosmic Mocha", desc: "Rich espresso, creamy milk, and a hint of chocolate—crafted with robotic precision." },
+                { img: "Generated Image September 14, 2025 - 11_08PM (1).png", name: "Galactic Matcha", desc: "Earthy matcha meets smooth milk and ice for a refreshing green treat." },
+                { img: "Generated Image September 14, 2025 - 11_08PM (2).png", name: "Solar Citrus Brew", desc: "Bright citrus infusion with a coffee twist, perfect for sunny days." },
+                { img: "Generated Image September 14, 2025 - 11_08PM (3).png", name: "Milky Way Latte", desc: "Layered espresso and milk, topped with ice—out of this world flavor." },
+                { img: "Generated Image September 14, 2025 - 11_08PM (4).png", name: "Nebula Caramel", desc: "Sweet caramel swirls and bold coffee, a stellar combination." },
+                { img: "Generated Image September 14, 2025 - 11_09PM.png", name: "Starlight Macchiato", desc: "Classic macchiato with a cosmic twist, finished with a creamy layer." },
+              ].map((item, idx) => (
+                <div
+                  key={item.img}
+                  className="bg-gradient-to-br from-purple-900/60 to-purple-800/30 rounded-3xl shadow-xl border border-purple-500/30 p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300"
+                >
+                  <div className="bg-white rounded-2xl shadow-lg p-4 mb-4 w-full flex items-center justify-center">
+                    <img
+                      src={`./src/assets/${item.img}`}
+                      alt={item.name}
+                      className="object-contain h-48 w-auto"
+                      style={{ borderRadius: "1rem" }}
+                    />
+                  </div>
+                  <span className="text-purple-300 font-bold text-xl mb-2 text-center">{item.name}</span>
+                  <p className="text-gray-300 text-center text-base">{item.desc}</p>
+                  <div className="mt-4 flex justify-center">
+                    <span className="px-4 py-1 bg-purple-700/80 text-white rounded-full text-xs font-semibold tracking-wide shadow">
+                      #RoboticBarista
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 justify-center text-center">
