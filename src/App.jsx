@@ -280,12 +280,12 @@ function App() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
               {[
-                { img: "Generated Image September 14, 2025 - 11_08PM.png", name: "Cosmic Mocha", desc: "Rich espresso, creamy milk, and a hint of chocolate—crafted with robotic precision." },
-                { img: "Generated Image September 14, 2025 - 11_08PM (1).png", name: "Galactic Matcha", desc: "Earthy matcha meets smooth milk and ice for a refreshing green treat." },
-                { img: "Generated Image September 14, 2025 - 11_08PM (2).png", name: "Solar Citrus Brew", desc: "Bright citrus infusion with a coffee twist, perfect for sunny days." },
-                { img: "Generated Image September 14, 2025 - 11_08PM (3).png", name: "Milky Way Latte", desc: "Layered espresso and milk, topped with ice—out of this world flavor." },
-                { img: "Generated Image September 14, 2025 - 11_08PM (4).png", name: "Nebula Caramel", desc: "Sweet caramel swirls and bold coffee, a stellar combination." },
-                { img: "Generated Image September 14, 2025 - 11_09PM.png", name: "Starlight Macchiato", desc: "Classic macchiato with a cosmic twist, finished with a creamy layer." },
+                { img: "https://i.postimg.cc/prW6ybtr/Generated-Image-September-14-2025-11-08-PM.png", name: "Cosmic Mocha", desc: "Rich espresso, creamy milk, and a hint of chocolate—crafted with robotic precision." },
+                { img: "https://i.postimg.cc/0Qw8ZS6D/Generated-Image-September-14-2025-11-08-PM-1.png", name: "Galactic Matcha", desc: "Earthy matcha meets smooth milk and ice for a refreshing green treat." },
+                { img: "https://i.postimg.cc/GhpfCCQS/Generated-Image-September-14-2025-11-08-PM-2.png", name: "Solar Citrus Brew", desc: "Bright citrus infusion with a coffee twist, perfect for sunny days." },
+                { img: "https://i.postimg.cc/L6hxWV9c/Generated-Image-September-14-2025-11-08-PM-3.png", name: "Milky Way Latte", desc: "Layered espresso and milk, topped with ice—out of this world flavor." },
+                { img: "https://i.postimg.cc/ZK1xMtDN/Generated-Image-September-14-2025-11-08-PM-4.png", name: "Nebula Caramel", desc: "Sweet caramel swirls and bold coffee, a stellar combination." },
+                { img: "https://i.postimg.cc/FH50xb7g/Generated-Image-September-14-2025-11-09-PM.png", name: "Starlight Macchiato", desc: "Classic macchiato with a cosmic twist, finished with a creamy layer." },
               ].map((item, idx) => (
                 <div
                   key={item.img}
@@ -293,7 +293,7 @@ function App() {
                 >
                   <div className="bg-white rounded-2xl shadow-lg p-4 mb-4 w-full flex items-center justify-center">
                     <img
-                      src={`./src/assets/${item.img}`}
+                      src={item.img}
                       alt={item.name}
                       className="object-contain h-48 w-auto"
                       style={{ borderRadius: "1rem" }}
